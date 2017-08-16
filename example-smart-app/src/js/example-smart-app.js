@@ -63,7 +63,7 @@
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
           p.height = getQuantityValueAndUnit(height[0]);
-          p.conditions = conditions; console.log(p.height);
+          p.conditions = conditions;
           p.medications = medications;
 
           if (typeof systolicbp != 'undefined')  {
@@ -170,6 +170,9 @@
     $('#hdl').html(p.hdl); 
     $('#condics').html(p.conditions);
     $('#medics').html(p.medications);
+    
+    console.log(p.conditions);
+    onsole.log(p.medications);
   };
 
 })(window);
