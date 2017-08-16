@@ -103,7 +103,7 @@
       ldl: {value: ''},
       hdl: {value: ''},
       conditions: {value: []},
-      medications:{value: []},
+      medications: {value: []},
     };
   }
 
