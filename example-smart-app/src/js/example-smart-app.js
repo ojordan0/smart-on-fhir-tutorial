@@ -41,7 +41,6 @@
           var day = dob.getDate();
           var monthIndex = dob.getMonth() + 1;
           var year = dob.getFullYear();
-console.log(obv);
           var dobStr = monthIndex + '/' + day + '/' + year;
           var fname = '';
           var lname = '';
@@ -64,8 +63,8 @@ console.log(obv);
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
           p.height = getQuantityValueAndUnit(height[0]);
-          p.conditions = conditions.entry; console.log(conditions.entry);
-          p.medications = medications.entry;
+          p.conditions = conditions; console.log(p.height);
+          p.medications = medications;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
