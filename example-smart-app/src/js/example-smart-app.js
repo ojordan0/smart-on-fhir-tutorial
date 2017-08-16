@@ -64,7 +64,7 @@
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
           p.height = getQuantityValueAndUnit(height[0]);
-          p.conditions = conditions.entry;console.log(medications.entry[0].text.div);
+          p.conditions = conditions.entry;console.log(medications.entry.text.div);
           p.medications = medications.entry;
 
           if (typeof systolicbp != 'undefined')  {
