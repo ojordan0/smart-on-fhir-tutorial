@@ -63,7 +63,7 @@
           p.fname = fname;
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
-          p.height = getQuantityValueAndUnit(height[0]);console.log(conditions.data);
+          p.height = getQuantityValueAndUnit(height[0]);
           p.conditions = conditions.entry;console.log(medications.entry[0].text.div);
           p.medications = medications.entry;
 
@@ -168,8 +168,8 @@
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
-    $('#hdl').html(p.hdl); console.log(p.conditions);
-    $('#condics').html(p.conditions);console.log(p.medications);
+    $('#hdl').html(p.hdl); 
+    $('#condics').html(p.conditions);
     $('#medics').html(p.medications);
   };
 
