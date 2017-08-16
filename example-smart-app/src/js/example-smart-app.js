@@ -21,10 +21,20 @@
                       }
                     }
                   });
+        
+        // Search for the current patient's conditions
+        var conds = smart.patient.api.search({
+                          type: 'Condition'
+                        });
+                 
+        // Search for the current patient's prescriptions
+        var meds = smart.patient.api.search({
+                          type: 'MedicationOrder'
+                        });
 
-        $.when(pt, obv).fail(onError);
+        $.when(pt, obv, conds, meds).fail(onError);
 
-        $.when(pt, obv).done(function(patient, obv) {
+        $.when(pt, obv, conds, meds).done(function(patient, obv, conditions, medications) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);
@@ -54,6 +64,8 @@
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
           p.height = getQuantityValueAndUnit(height[0]);
+          p.conditions = conditions.entry;
+          p.medications = medications.entry;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
@@ -90,6 +102,8 @@
       diastolicbp: {value: ''},
       ldl: {value: ''},
       hdl: {value: ''},
+      conditions: {value: []},
+      medications:{value: []},
     };
   }
 
@@ -155,6 +169,8 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl);
+    $('#condics').html(p.conditions);
+    $('#medics').html(p.medications);
   };
 
 })(window);
