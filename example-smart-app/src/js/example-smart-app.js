@@ -168,8 +168,8 @@
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
-    $('#hdl').html(p.hdl);
-    $('#condics').html(p.conditions);
+    $('#hdl').html(p.hdl); console.log(p.conditions);
+    $('#condics').html(p.conditions);console.log(p.medications);
     $('#medics').html(p.medications);
   };
 
