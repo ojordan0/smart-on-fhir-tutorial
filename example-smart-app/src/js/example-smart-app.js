@@ -172,7 +172,7 @@
     $('#medics').html(p.medications);
     
     console.log(p.conditions);
-    onsole.log(p.medications);
+    console.log(p.medications);
   };
 
 })(window);
