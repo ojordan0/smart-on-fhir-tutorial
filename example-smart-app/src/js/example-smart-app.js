@@ -64,7 +64,7 @@
             var conditionEntries = conditions.data.entry;
             for (var i = 0; i < conditionEntries.length; i++) {
                 var singleresult = conditionEntries[i];
-                pConditions[i] = "Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetSateTime;
+                pConditions[i] = "<li>Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetDateTime + '</li>';
              }
           }
          
@@ -166,7 +166,16 @@
       return undefined;
     }
   }
-
+  
+  function getConditionsHtmlContent(condArray) {
+    var htmlContent = '<ul>';
+    for (var i = 0; i < condArray.length; i++) {
+        htmlContent += "<li>" + condArray[i] + '</li>';
+     }
+    htmlContent += '</ul>';
+    return htmlContent;
+  }
+  
   window.drawVisualization = function(p) {
     $('#holder').show();
     $('#loading').hide();
@@ -180,11 +189,13 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl); 
-    $('#condics').html(p.conditions);
+    if (p.conditions.lenght > 0) {
+      var conditionsHtml = getConditionsHtmlContent(p.conditions);
+      $('#condics').html(conditionsHtml);
+    } else {
+      $('#condics').html("This patients do not have any documented Conditions.");
+    }
     $('#medics').html(p.medications);
-    console.log("final -  log");
-    console.log(p.conditions);
-    console.log(p.medications);
   };
  
 })(window);
