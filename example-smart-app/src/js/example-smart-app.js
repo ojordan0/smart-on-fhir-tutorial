@@ -55,7 +55,11 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-
+          
+          var pConditions = [];
+          if (typeof conditions[0] !== 'undefined') {
+            pConditions[0] = {"name": conditions[0].code.text , "dateRecorded": conditions[0].dateRecorded};
+          }
           var p = defaultPatient();
           p.birthdate = dobStr;
           p.gender = gender;
@@ -63,8 +67,8 @@
           p.lname = lname;
           p.age = parseInt(calculateAge(dob));
           p.height = getQuantityValueAndUnit(height[0]);
-          p.conditions = conditions;
-          p.medications = medications;
+          p.conditions = pConditions;
+          //p.medications = medications;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
