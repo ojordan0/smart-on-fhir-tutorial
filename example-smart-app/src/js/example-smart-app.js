@@ -57,9 +57,16 @@
           var ldl = byCodes('2089-1');
           
           var pConditions = [];
-          if (typeof conditions[0] !== 'undefined') {
-            pConditions[0] = {"name": conditions[0].code.text , "dateRecorded": conditions[0].dateRecorded};
+          for (var i = 0; i < conditions.length; i++) {
+              var singleresult = conditions[i][0];
+              pConditions[i] = {"name": conditions[i].code.text , "dateRecorded": conditions[i].dateRecorded};
+            console.log("this is a singleresult"); 
+            console.log(singleresult);
+            console.log("this is a singleresult in i"); 
+            console.log(pConditions[i]);
           }
+          //if (typeof conditions[0] !== 'undefined') {
+          //}
           var p = defaultPatient();
           p.birthdate = dobStr;
           p.gender = gender;
@@ -174,7 +181,7 @@
     $('#hdl').html(p.hdl); 
     $('#condics').html(p.conditions);
     $('#medics').html(p.medications);
-    
+    console.log("final log");
     console.log(p.conditions);
     console.log(p.medications);
   };
