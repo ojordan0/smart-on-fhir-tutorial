@@ -73,9 +73,9 @@
           if (medications.data.total > 0) {
             if (typeof medications.data.entry.length !== 'undefined') {
               console.log("- medications total: " + medications.data.total); 
-              var conditionEntries = conditions.data.entry;
-              for (var i = 0; i < conditionEntries.length; i++) {
-                  pMedications[i] = "Medication: " + ' ' + conditionEntries[i].resource.medicationCodeableConcept.text + '.  ' + "Date Written" + ' ' +  conditionEntries[i].resource.dateWritten + '';
+              var medicationEntries = medications.data.entry;
+              for (var i = 0; i < medicationEntries.length; i++) {
+                  pMedications[i] = "Medication: " + ' ' + medicationEntries[i].resource.medicationCodeableConcept.text + '.  ' + "Date Written" + ' ' +  medicationEntries[i].resource.dateWritten + '';
                }
             }
           }
