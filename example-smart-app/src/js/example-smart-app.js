@@ -55,7 +55,7 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          
+          console.log("this total: " + conditions.length); 
           var pConditions = [];
           for (var i = 0; i < conditions.length; i++) {
               var singleresult = conditions[i][0];
@@ -65,8 +65,7 @@
             console.log("this is a singleresult in i"); 
             console.log(pConditions[i]);
           }
-          //if (typeof conditions[0] !== 'undefined') {
-          //}
+         
           var p = defaultPatient();
           p.birthdate = dobStr;
           p.gender = gender;
