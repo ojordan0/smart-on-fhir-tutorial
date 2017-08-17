@@ -64,7 +64,7 @@
             var conditionEntries = conditions.data.entry;
             for (var i = 0; i < conditionEntries.length; i++) {
                 var singleresult = conditionEntries[i];
-                pConditions[i] = "<li>Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetDateTime + '</li>';
+                pConditions[i] = "Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetDateTime + '';
              }
           }
          
@@ -188,7 +188,7 @@
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
-    $('#hdl').html(p.hdl); 
+    $('#hdl').html(p.hdl); console.log(p.conditions);
     if (p.conditions.lenght > 0) {
       var conditionsHtml = getConditionsHtmlContent(p.conditions);
       $('#condics').html(conditionsHtml);
