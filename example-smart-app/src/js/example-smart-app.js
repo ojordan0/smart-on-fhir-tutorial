@@ -88,7 +88,7 @@
           p.age = parseInt(calculateAge(dob));
           p.height = getQuantityValueAndUnit(height[0]);
           p.conditions = pConditions;
-          p.medications = medications;
+          p.medications = pMedications;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
