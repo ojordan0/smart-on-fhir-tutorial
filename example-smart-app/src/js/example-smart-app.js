@@ -55,8 +55,9 @@
           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
-          console.log("this total: " + conditions.length); 
-          var pConditions = [];
+          
+          console.log("this - total: " + conditions.length); 
+          var pConditions = [{"name": "Bla" , "dateRecorded": "200dfd"}];
           for (var i = 0; i < conditions.length; i++) {
               var singleresult = conditions[i][0];
               pConditions[i] = {"name": conditions[i].code.text , "dateRecorded": conditions[i].dateRecorded};
@@ -180,7 +181,7 @@
     $('#hdl').html(p.hdl); 
     $('#condics').html(p.conditions);
     $('#medics').html(p.medications);
-    console.log("final log");
+    console.log("final -  log");
     console.log(p.conditions);
     console.log(p.medications);
   };
