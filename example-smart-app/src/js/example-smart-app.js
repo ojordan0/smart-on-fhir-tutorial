@@ -26,7 +26,7 @@
         var conds = smart.patient.api.search({
                           type: 'Condition'
                         });
-                 
+            console.log(conds);     
         // Search for the current patient's prescriptions
         var meds = smart.patient.api.search({
                           type: 'MedicationOrder'
@@ -57,14 +57,16 @@
           var ldl = byCodes('2089-1');
           
           console.log("this - total: " + conditions.length); 
-          var pConditions = [{"name": "Bla" , "dateRecorded": "200dfd"}];
-          for (var i = 0; i < conditions.length; i++) {
-              var singleresult = conditions[i][0];
-              pConditions[i] = {"name": conditions[i].code.text , "dateRecorded": conditions[i].dateRecorded};
-            console.log("this is a singleresult"); 
-            console.log(singleresult);
-            console.log("this is a singleresult in i"); 
-            console.log(pConditions[i]);
+          var pConditions = [];
+          if (typeof onditions.length !== 'undefined') {
+            for (var i = 0; i < conditions.length; i++) {
+                var singleresult = conditions[i][0];
+                pConditions[i] = "Condition: " + ' ' + conditions[i].code.text + '.  ' + "Date Recorded" + ' ' +  conditions[i].dateRecorded;
+              console.log("this is a singleresult"); 
+              console.log(singleresult);
+              console.log("this is a singleresult in i"); 
+              console.log(pConditions[i]);
+            }
           }
          
           var p = defaultPatient();
