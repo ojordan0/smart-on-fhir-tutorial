@@ -26,7 +26,7 @@
         var conds = smart.patient.api.search({
                           type: 'Condition'
                         });
-            console.log(conds);     
+   
         // Search for the current patient's prescriptions
         var meds = smart.patient.api.search({
                           type: 'MedicationOrder'
@@ -35,7 +35,8 @@
         $.when(pt, obv, conds, meds).fail(onError);
 
         $.when(pt, obv, conds, meds).done(function(patient, obv, conditions, medications) {
-          console.log(medications); 
+          //console.log(conditions); 
+          //console.log(medications); 
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);
@@ -57,16 +58,24 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           
-          console.log("- medications total: " + (typeof medications.data.entry.length !== 'undefined')); 
-          
           var pConditions = [];
-          if (typeof conditions.data.entry !== 'undefined') {
+          if (conditions.data.total > 0) {
             if (typeof conditions.data.entry.length !== 'undefined') {
-              console.log("- conditions total: " + conditions.data.entry.length); 
+              console.log("- conditions total: " + conditions.data.total); 
               var conditionEntries = conditions.data.entry;
               for (var i = 0; i < conditionEntries.length; i++) {
-                  var singleresult = conditionEntries[i];
                   pConditions[i] = "Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetDateTime + '';
+               }
+            }
+          }
+          
+          var pMedications = [];
+          if (medications.data.total > 0) {
+            if (typeof medications.data.entry.length !== 'undefined') {
+              console.log("- medications total: " + medications.data.total); 
+              var conditionEntries = conditions.data.entry;
+              for (var i = 0; i < conditionEntries.length; i++) {
+                  pMedications[i] = "Medication: " + ' ' + conditionEntries[i].resource.medicationCodeableConcept.text + '.  ' + "Date Written" + ' ' +  conditionEntries[i].resource.dateWritten + '';
                }
             }
           }
@@ -79,7 +88,7 @@
           p.age = parseInt(calculateAge(dob));
           p.height = getQuantityValueAndUnit(height[0]);
           p.conditions = pConditions;
-          //p.medications = medications;
+          p.medications = medications;
 
           if (typeof systolicbp != 'undefined')  {
             p.systolicbp = systolicbp;
