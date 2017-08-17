@@ -35,7 +35,7 @@
         $.when(pt, obv, conds, meds).fail(onError);
 
         $.when(pt, obv, conds, meds).done(function(patient, obv, conditions, medications) {
-          console.log(conditions); 
+          console.log(conditions); console.log("first Condition: "); console.log(conditions[0]); 
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);
