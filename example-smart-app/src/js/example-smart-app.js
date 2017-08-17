@@ -35,6 +35,7 @@
         $.when(pt, obv, conds, meds).fail(onError);
 
         $.when(pt, obv, conds, meds).done(function(patient, obv, conditions, medications) {
+          console.log(conditions); 
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);
@@ -59,7 +60,7 @@
           console.log("this - conditions total: " + conditions.length); 
           console.log("this - medications total: " + medications.length); 
           var pConditions = [];
-          if (typeof onditions.length !== 'undefined') {
+          if (typeof conditions.length !== 'undefined') {
             for (var i = 0; i < conditions.length; i++) {
                 var singleresult = conditions[i][0];
                 pConditions[i] = "Condition: " + ' ' + conditions[i].code.text + '.  ' + "Date Recorded" + ' ' +  conditions[i].dateRecorded;
