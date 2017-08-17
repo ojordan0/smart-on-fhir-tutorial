@@ -60,13 +60,15 @@
           console.log("- medications total: " + (typeof conditions.data.entry.length !== 'undefined')); 
           
           var pConditions = [];
-          if (typeof conditions.data.entry.length !== 'undefined') {
-            console.log("- conditions total: " + conditions.data.entry.length); 
-            var conditionEntries = conditions.data.entry;
-            for (var i = 0; i < conditionEntries.length; i++) {
-                var singleresult = conditionEntries[i];
-                pConditions[i] = "Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetDateTime + '';
-             }
+          if (typeof conditions.data.entry !== 'undefined') {
+            if (typeof conditions.data.entry.length !== 'undefined') {
+              console.log("- conditions total: " + conditions.data.entry.length); 
+              var conditionEntries = conditions.data.entry;
+              for (var i = 0; i < conditionEntries.length; i++) {
+                  var singleresult = conditionEntries[i];
+                  pConditions[i] = "Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetDateTime + '';
+               }
+            }
           }
          
           var p = defaultPatient();
