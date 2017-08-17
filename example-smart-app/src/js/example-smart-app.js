@@ -56,7 +56,8 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           
-          console.log("this - total: " + conditions.length); 
+          console.log("this - conditions total: " + conditions.length); 
+          console.log("this - medications total: " + medications.length); 
           var pConditions = [];
           if (typeof onditions.length !== 'undefined') {
             for (var i = 0; i < conditions.length; i++) {
