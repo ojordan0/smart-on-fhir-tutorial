@@ -167,7 +167,7 @@
     }
   }
   
-  function getConditionsHtmlContent(condArray) {
+  function getListHtmlContent(condArray) {
     var htmlContent = '<ul>';
     for (var i = 0; i < condArray.length; i++) {
         htmlContent += "<li>" + condArray[i] + '</li>';
@@ -189,14 +189,19 @@
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
     $('#hdl').html(p.hdl); 
-    console.log('final results: ');console.log(p.conditions); console.log(p.conditions.lenght);console.log((p.conditions).lenght);
-    if (p.conditions.lenght > 0) {
-      var conditionsHtml = getConditionsHtmlContent(p.conditions);
+    if (p.conditions.length > 0) {
+      var conditionsHtml = getListHtmlContent(p.conditions);
       $('#condics').html(conditionsHtml);
     } else {
       $('#condics').html("This patients do not have any documented Conditions.");
     }
-    $('#medics').html(p.medications);
+    if (p.medications.length > 0) {
+      var medicationsHtml = getListHtmlContent(p.medications);
+      $('#medics').html(medicationsHtml);
+    } else {
+      $('#medics').html("This patients do not have any documented Medication Orders.");
+    }
+    
   };
  
 })(window);
