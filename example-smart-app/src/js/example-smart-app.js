@@ -35,7 +35,7 @@
         $.when(pt, obv, conds, meds).fail(onError);
 
         $.when(pt, obv, conds, meds).done(function(patient, obv, conditions, medications) {
-          console.log(conditions); console.log("first Condition: "); console.log(patient); 
+          console.log(conditions); console.log("patient: "); console.log(patient); 
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);
@@ -58,18 +58,14 @@
           var ldl = byCodes('2089-1');
           
           console.log("this - conditions total: " + conditions.data.entry.length); 
-          console.log("this - medications total: " + medications.length); 
+          console.log("this - medications total: " + medications.data.entry.length); 
           var pConditions = [];
           if (typeof conditions.data.entry.length !== 'undefined') {
             var conditionEntries = conditions.data.entry;
             for (var i = 0; i < conditionEntries.length; i++) {
-                var singleresult = conditionEntries[i][0];
-                pConditions[i] = "Condition: " + ' ' + conditionEntries[i].code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].dateRecorded;
-              console.log("this is a singleresult"); 
-              console.log(singleresult);
-              console.log("this is a singleresult in i"); 
-              console.log(pConditions[i]);
-            }
+                var singleresult = conditionEntries[i];
+                pConditions[i] = "Condition: " + ' ' + conditionEntries[i].resource.code.text + '.  ' + "Date Recorded" + ' ' +  conditionEntries[i].resource.onsetSateTime;
+             }
           }
          
           var p = defaultPatient();
