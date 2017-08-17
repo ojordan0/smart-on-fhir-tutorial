@@ -57,10 +57,11 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           
-          console.log("this - conditions total: " + conditions.data.entry.length); 
-          console.log("this - medications total: " + medications.data.entry.length); 
+          console.log("this - medications total: " + (typeof conditions.data.entry.length !== 'undefined')); 
+          
           var pConditions = [];
           if (typeof conditions.data.entry.length !== 'undefined') {
+            console.log("this - conditions total: " + conditions.data.entry.length); 
             var conditionEntries = conditions.data.entry;
             for (var i = 0; i < conditionEntries.length; i++) {
                 var singleresult = conditionEntries[i];
