@@ -35,7 +35,7 @@
         $.when(pt, obv, conds, meds).fail(onError);
 
         $.when(pt, obv, conds, meds).done(function(patient, obv, conditions, medications) {
-          console.log(conditions); console.log("patient: "); console.log(patient); 
+          console.log(medications); 
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           var dob = new Date(patient.birthDate);
@@ -57,7 +57,7 @@
           var hdl = byCodes('2085-9');
           var ldl = byCodes('2089-1');
           
-          console.log("- medications total: " + (typeof conditions.data.entry.length !== 'undefined')); 
+          console.log("- medications total: " + (typeof medications.data.entry.length !== 'undefined')); 
           
           var pConditions = [];
           if (typeof conditions.data.entry !== 'undefined') {
