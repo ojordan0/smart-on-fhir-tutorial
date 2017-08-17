@@ -188,7 +188,8 @@
     $('#systolicbp').html(p.systolicbp);
     $('#diastolicbp').html(p.diastolicbp);
     $('#ldl').html(p.ldl);
-    $('#hdl').html(p.hdl); console.log(p.conditions); console.log(p.conditions.lenght);console.log((p.conditions).lenght);
+    $('#hdl').html(p.hdl); 
+    console.log('final results: ');console.log(p.conditions); console.log(p.conditions.lenght);console.log((p.conditions).lenght);
     if (p.conditions.lenght > 0) {
       var conditionsHtml = getConditionsHtmlContent(p.conditions);
       $('#condics').html(conditionsHtml);
